@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ApiPokemonProject</string>
     <string name="pokemon_s_name">Pokemon\'s name</string>
+    <string name="new_activity">new activity</string>
 </resources>

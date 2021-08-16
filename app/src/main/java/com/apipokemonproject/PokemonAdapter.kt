@@ -1,6 +1,8 @@
 package com.apipokemonproject
 
 import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +14,7 @@ import com.bumptech.glide.Glide
 import java.util.zip.Inflater
 
 class PokemonAdapter(private val theResult: List<Result>, private val context: Context):RecyclerView.Adapter<PokemonAdapter.MyViewHolder>() {
-    inner class MyViewHolder(myViews:View):RecyclerView.ViewHolder(myViews) {
+    inner class MyViewHolder(var myViews:View):RecyclerView.ViewHolder(myViews) {
         var instanceOfImageView: ImageView
         var instanceOfTextView: TextView
 
@@ -23,6 +25,8 @@ class PokemonAdapter(private val theResult: List<Result>, private val context: C
 
         fun bindingFunction(theResult: Result){
             instanceOfTextView.text = theResult.name
+            val pokeNum = theResult.url
+            Log.d("Adapter", pokeNum)
         }
 
     }
@@ -34,13 +38,24 @@ class PokemonAdapter(private val theResult: List<Result>, private val context: C
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bindingFunction(theResult[position])
+        holder.myViews.setOnClickListener {
+            toDetailsActivity()
+        }
+        val url = theResult[position].url
 
         Glide
             .with(context)
             .load(SplitImageAddress.splitFunction(position+1))
             .centerCrop()
             .placeholder(R.drawable.ic_launcher_background)
-            .into(holder.instanceOfImageView);
+            .into(holder.instanceOfImageView)
+
+
+    }
+
+    private fun toDetailsActivity() {
+        var intent = Intent(context, DetailsActivity::class.java)
+        context.startActivity(intent)
     }
 
     override fun getItemCount(): Int {
