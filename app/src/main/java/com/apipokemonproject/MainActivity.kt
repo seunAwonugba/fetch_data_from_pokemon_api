@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,7 +35,13 @@ class MainActivity : AppCompatActivity() {
         instanceOfRecyclerView.layoutManager = GridLayoutManager(this,2)
         instanceOfRecyclerView.setHasFixedSize(true)
 
-        functionGetData()
+        try {
+            functionGetData()
+        }catch (e:Throwable){
+            e.printStackTrace()
+                Log.d("TAG", "${e.message}")
+            Toast.makeText(this, "An error occurred, invalid address or broken link", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun functionGetData() {

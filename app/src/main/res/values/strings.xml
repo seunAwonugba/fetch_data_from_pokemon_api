@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">ApiPokemonProject</string>
     <string name="pokemon_s_name">Pokemon\'s name</string>
+    <string name="new_activity">new activity</string>
+    <string name="pokemon_name">Pokemon name</string>
+    <string name="name">Name</string>
+    <string name="ability">ability</string>
+    <string name="base_experience">base_experience</string>
+    <string name="height">height</string>
+    <string name="moves">Moves</string>
+    <string name="ability2">ability2</string>
+    <string name="weight">Weight</string>
 </resources>

@@ -1,8 +1,11 @@
 package com.apipokemonproject
 
+/**
+ * Create an object class that takes care of image URL manipulation
+ */
 object SplitImageAddress {
-    fun splitFunction(pokemonNumber:Int):String{
-        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonNumber}.png"
+    fun splitFunction(pokemonName:String):String{
+        return "https://img.pokemondb.net/artwork/large/${pokemonName}.jpg"
     }
 
 }
